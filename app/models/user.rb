@@ -6,4 +6,6 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
     has_secure_password
     validates :is_estate, inclusion: { in: [true, false]}
+    
+    has_one :offer
 end

@@ -10,6 +10,15 @@
         </div>
     </aside>
     <div class="col-sm-9">
-        
+        <div class="container">
+            <h3>オファー内容</h3>
+            <%= link_to '編集', edit_offer_path, class: 'btn btn-primary float-right mb-2' %>
+        </div>
+        <table class="table">
+            <tbody>
+                <td>家賃</td>
+                <td><%= @offer.min_price.to_s %>円 〜 <%= @user.offer.max_price.to_s %>円</td>
+            </tbody>
+        </table>
     </div>
 </div>

@@ -1,0 +1,11 @@
+<h1>オファー内容を編集する</h1>
+
+<%= form_with(model: @offer, local: true) do |f| %>
+    <table class="table">
+        <tbody>
+            <td>家賃</td>
+            <td><%= f.number_field :min_price %>円 ~ <%= f.number_field :max_price %>円</td>
+        </tbody>
+    </table>
+    <%= f.submit '編集' %>
+<% end %>

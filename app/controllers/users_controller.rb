@@ -5,6 +5,10 @@ class UsersController < ApplicationController
 
   def show
     set_user
+    @offer = @user.offer
+    unless @offer
+      @offer = @user.build_offer
+    end
   end
 
   def new
