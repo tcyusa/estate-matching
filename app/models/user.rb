@@ -7,5 +7,6 @@ class User < ApplicationRecord
     has_secure_password
     validates :is_estate, inclusion: { in: [true, false]}
     
-    has_one :offer
+    has_one :offer, dependent: :destroy
+
 end

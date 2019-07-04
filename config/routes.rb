@@ -7,6 +7,18 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   
   get 'signup', to: 'users#new'
+  
+  get 'offers/:id/edit', to: 'offers#edit'
+  post 'offers/:id/', to: 'offers#update'
+  put 'offers/:id/', to: 'offers#update'
+  
+  resources :offers, only: [:show, :new, :create, :edit, :update] do
+    member do
+      get :cities
+      get :choices
+    end
+  end
+
   resources :users, only: [:index, :show, :new, :create]
-  resources :offers, only: [:create, :edit, :update, :destroy]
+  resources :offers, only: [:edit, :update, :destroy]
 end

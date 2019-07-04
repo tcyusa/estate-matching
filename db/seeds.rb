@@ -1,7 +1,34 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+=begin
+City.create(name: '足立区')
+City.create(name: '荒川区')
+City.create(name: '板橋区')
+City.create(name: '江戸川区')
+City.create(name: '大田区')
+City.create(name: '葛飾区')
+City.create(name: '北区')
+City.create(name: '江東区')
+City.create(name: '品川区')
+City.create(name: '渋谷区')
+City.create(name: '新宿区')
+City.create(name: '杉並区')
+City.create(name: '墨田区')
+City.create(name: '世田谷区')
+City.create(name: '台東区')
+City.create(name: '千代田区')
+City.create(name: '中央区')
+City.create(name: '豊島区')
+City.create(name: '中野区')
+City.create(name: '練馬区')
+City.create(name: '文京区')
+City.create(name: '港区')
+City.create(name: '目黒区')
+=end
+
+Choice.create(content: '閑静な住宅街')
+Choice.create(content: '地域交流が活発')
+Choice.create(content: '文化的活動が活発な地域')
+Choice.create(content: '自然が豊か')
+Choice.create(content: '大きな公園がある')
+Choice.create(content: '繁華街に近い')
+Choice.create(content: '商店街がある')
+Choice.create(content: '子育てしやすい')
