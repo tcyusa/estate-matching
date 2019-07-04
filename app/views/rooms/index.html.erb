@@ -1,8 +1,10 @@
 <h1>メッセージ一覧</h1>
 
-<ul>
+<table class="table">
     <% @entries.each do |e| %>
-        <% @room = Room.where(id: e.room_id) %>
-        <li><%= @room.name %>からのメッセージ</li>
+        <tr>
+            <% @room = Room.find(e.room_id) %>
+            <td><%= link_to @room.name, room_path(@room) %>からのメッセージ</td>
+        </tr>
     <% end %>
-</ul>
+</table>

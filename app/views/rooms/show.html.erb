@@ -1,15 +1,30 @@
-<h1><%= @room.name %>とのメッセージ</h1>
+<h1 class="mb-2"><%= @room.name %>とのメッセージ</h1>
 
-<% @messages.each do |m| %>
-    <div><%= m.user.name %></div>
-    <%= m.content %>
-<% end %>
+<table class="table">
+    <% @messages.each do |m| %>
+        <tr>
+            <td>
+        <div class="message">
+            <div class="row mb-1 justify-content-between">
+                <h5><%= m.user.name %></h5>
+                <span><%= m.created_at %></span>
+            </div>
+            <%= m.content %>
+        </div>
+            </td>
+        </tr>
+    <% end %>
+</table>
 
-<%= form_with(model: @message, local: true) do |f| %>
-  <%= f.text_field :content %>
-  <%= f.hidden_field :room_id, :value => @room.id %>
-  <br>
-  <%= f.submit "送信する" %>
-<% end %>
-
-<%= link_to 'メッセージ一覧に戻る', rooms_path %>
+    <%= form_with(model: @message, local: true) do |f| %>
+      <%= f.text_area :content, size: "136x3" %>
+      <%= f.hidden_field :room_id, :value => @room.id %>
+      <br>
+      <div class="float-right">
+          <%= f.submit "送信する", class: 'btn btn-primary justify-content-end'%>
+      </div>
+    <% end %>
+    
+    <br>
+    <%= link_to 'メッセージ一覧に戻る', rooms_path %>
+</div>
