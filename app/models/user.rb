@@ -8,5 +8,7 @@ class User < ApplicationRecord
     validates :is_estate, inclusion: { in: [true, false]}
     
     has_one :offer, dependent: :destroy
+    has_many :messages, dependent: :destroy
+    has_many :entries, dependent: :destroy
 
 end

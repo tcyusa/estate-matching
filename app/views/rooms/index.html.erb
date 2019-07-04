@@ -1,0 +1,8 @@
+<h1>メッセージ一覧</h1>
+
+<ul>
+    <% @entries.each do |e| %>
+        <% @room = Room.where(id: e.room_id) %>
+        <li><%= @room.name %>からのメッセージ</li>
+    <% end %>
+</ul>
