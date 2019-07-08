@@ -6,15 +6,22 @@
         <% if @user.is_estate %>
             <%# 不動産ユーザー %>
             <h3>プロフィール</h3>
-            <div class="row float-right mb-2">
-                <a href="#"><button class="btn btn-primary mr-2">編集</button></a>
-            </div>
+            <% if current_user.id == @user.id %>
+                <%# 自分自身のとき編集ボタンを表示する %>
+                <div class="row float-right mb-2">
+                    <%= link_to '編集', edit_profile_path(@profile.id), class: 'btn btn-primary mr-2' %> 
+                </div>
+            <% end %>
             
             <% if @profile != nil %>
                 <table class="table">
                     <tr>
                         <td style="width: 20%">担当地域</td>
-                        <%# citiesとの関連作ってから %>
+                        <td>
+                            <% @profile.cities.each do |c| %>
+                                <span style="margin-right: 5px"><%= c.name %></span>
+                            <% end %>
+                        </td>
                     </tr>
                     <tr>
                         <td>紹介文</td>
@@ -41,9 +48,12 @@
         <% else %>
             <%# 一般ユーザー %>
             <h3>オファー内容</h3>
-            <div class="row float-right mb-2">
-                <%= link_to '編集', edit_offer_path(@offer.id), class: 'btn btn-primary mr-2' %> 
-            </div>
+            <% if current_user.id == @user.id %>
+                <%# 自分自身のとき編集ボタンを表示する %>
+                <div class="row float-right mb-2">
+                    <%= link_to '編集', edit_offer_path(@offer.id), class: 'btn btn-primary mr-2' %> 
+                </div>
+            <% end %>
     
             <% if @offer != nil %>
                 <table class="table">

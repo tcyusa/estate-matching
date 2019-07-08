@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_04_052855) do
+ActiveRecord::Schema.define(version: 2019_07_08_074914) do
 
   create_table "choices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -77,6 +77,27 @@ ActiveRecord::Schema.define(version: 2019_07_04_052855) do
     t.index ["user_id"], name: "index_offers_on_user_id"
   end
 
+  create_table "profile_city_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "profile_id"
+    t.bigint "city_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_profile_city_relations_on_city_id"
+    t.index ["profile_id", "city_id"], name: "index_profile_city_relations_on_profile_id_and_city_id", unique: true
+    t.index ["profile_id"], name: "index_profile_city_relations_on_profile_id"
+  end
+
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.text "pr"
+    t.string "address"
+    t.string "business_name"
+    t.string "tel", default: "0"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -101,4 +122,7 @@ ActiveRecord::Schema.define(version: 2019_07_04_052855) do
   add_foreign_key "offer_city_relations", "cities"
   add_foreign_key "offer_city_relations", "offers"
   add_foreign_key "offers", "users"
+  add_foreign_key "profile_city_relations", "cities"
+  add_foreign_key "profile_city_relations", "profiles"
+  add_foreign_key "profiles", "users"
 end

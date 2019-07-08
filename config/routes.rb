@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   post 'offers/:id/', to: 'offers#update'
   put 'offers/:id/', to: 'offers#update'
   
+  get 'profiles/:id/edit', to: 'profiles#edit'
+  post 'profiles/:id/', to: 'profiles#update'
+  put 'profiles/:id/', to: 'profiles#update'
+  
   resources :offers, only: [:show, :new, :create, :edit, :update] do
     member do
       get :cities
@@ -21,6 +25,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :new, :create]
   resources :offers, only: [:edit, :update, :destroy]
+  resources :profiles, only: [:edit, :update, :destroy]
   resources :messages, only: [:create]
   resources :rooms, only: [:index, :show, :create]
 end

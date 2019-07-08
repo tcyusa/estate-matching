@@ -1,2 +1,41 @@
-<h1>Profiles#edit</h1>
-<p>Find me in app/views/profiles/edit.html.erb</p>
+<h1>プロフィール内容を編集する</h1>
+
+<%= form_with(model: @profile, local: true) do |f| %>
+    <%= hidden_field_tag :user_id, current_user.id %>
+    <table class="table">
+        <tr>
+            <td style="width: 20%">担当地域</td>
+            <td>
+                <%= f.collection_check_boxes :city_ids, City.all, :id, :name do |b|%>
+                    <span style="margin-right: 5px"><%= b.check_box + b.label %></span>
+                <% end %>
+            </td>
+        </tr>
+        <tr>
+            <td>紹介文</td>
+            <td><%= f.text_area :pr %></td>
+        </tr>
+        <tr>
+            <td>称号</td>
+            <td><%= f.text_field :business_name %></td>
+        </tr>
+        <tr>
+            <td>住所</td>
+            <td><%= f.text_field :address %></td>
+        </tr>
+        <tr>
+            <td>電話番号</td>
+            <td><%= f.text_field :tel %></td>
+        </tr>
+<!--
+        <tr>
+            <td>メールアドレス</td>
+            <td><%= f.text_field :email %></td>
+        </tr>
+-->
+    </table>
+    
+    <div class="row justify-content-center">
+        <%= f.submit '編集', class: 'btn btn-primary' %>
+    </div>
+<% end %>

@@ -1,15 +1,22 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show]
   def index
+    # 顧客一覧を表示
+    @users = User.where(is_estate: false)
   end
 
   def show
     set_user
-#    @offer = @user.offer
     if (@offer = @user.offer) == nil
       @offer = @user.build_offer
       @offer.save
     end
+    
+    if(@profile = @user.profile) == nil
+      @profile = @user.build_profile
+      @profile.save
+    end
+    
     p params
   end
 
