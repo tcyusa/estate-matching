@@ -1,3 +1,7 @@
+User.create(name: 'user1', email: 'user1@email.com', password: 'password', is_estate: false)
+User.create(name: 'user2', email: 'user2@email.com', password: 'password', is_estate: false)
+User.create(name: 'user5', email: 'user5@email.com', password: 'password', is_estate: true)
+
 City.create(name: '足立区')
 City.create(name: '荒川区')
 City.create(name: '板橋区')

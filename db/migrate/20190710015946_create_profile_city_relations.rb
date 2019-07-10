@@ -6,7 +6,7 @@ class CreateProfileCityRelations < ActiveRecord::Migration[5.2]
 
       t.timestamps
       
-      t.index [:profile_id, :city_id], unique: true
+      t.index [:profile_id, :city_id], unique: true      
     end
   end
 end

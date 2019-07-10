@@ -5,7 +5,7 @@ class CreateProfiles < ActiveRecord::Migration[5.2]
       t.text :pr
       t.string :address
       t.string :business_name
-      t.integer :tel
+      t.string :tel
 
       t.timestamps
     end

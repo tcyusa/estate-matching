@@ -6,7 +6,7 @@ class CreateEntries < ActiveRecord::Migration[5.2]
 
       t.timestamps
       
-      t.index [:estate_user_id, :estate_user_id], unique: true
+      t.index [:estate_user_id, :normal_user_id], unique: true
     end
   end
 end

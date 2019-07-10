@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_08_100722) do
+ActiveRecord::Schema.define(version: 2019_07_10_015946) do
 
   create_table "choices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -25,28 +25,22 @@ ActiveRecord::Schema.define(version: 2019_07_08_100722) do
   end
 
   create_table "entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "room_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.bigint "estate_user_id"
     t.bigint "normal_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["estate_user_id", "normal_user_id"], name: "index_entries_on_estate_user_id_and_normal_user_id", unique: true
     t.index ["estate_user_id"], name: "index_entries_on_estate_user_id"
     t.index ["normal_user_id"], name: "index_entries_on_normal_user_id"
-    t.index ["room_id"], name: "index_entries_on_room_id"
-    t.index ["user_id", "room_id"], name: "index_entries_on_user_id_and_room_id", unique: true
-    t.index ["user_id"], name: "index_entries_on_user_id"
   end
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "room_id"
+    t.bigint "entry_id"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "entry_id"
     t.index ["entry_id"], name: "index_messages_on_entry_id"
-    t.index ["room_id"], name: "index_messages_on_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -98,16 +92,10 @@ ActiveRecord::Schema.define(version: 2019_07_08_100722) do
     t.text "pr"
     t.string "address"
     t.string "business_name"
-    t.string "tel", default: "0"
+    t.string "tel"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
-  end
-
-  create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -119,11 +107,9 @@ ActiveRecord::Schema.define(version: 2019_07_08_100722) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "entries", "users"
   add_foreign_key "entries", "users", column: "estate_user_id"
   add_foreign_key "entries", "users", column: "normal_user_id"
   add_foreign_key "messages", "entries"
-  add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "offer_choice_relations", "choices"
   add_foreign_key "offer_choice_relations", "offers"
