@@ -1,4 +1,3 @@
-=begin
 City.create(name: '足立区')
 City.create(name: '荒川区')
 City.create(name: '板橋区')
@@ -22,7 +21,6 @@ City.create(name: '練馬区')
 City.create(name: '文京区')
 City.create(name: '港区')
 City.create(name: '目黒区')
-=end
 
 Choice.create(content: '閑静な住宅街')
 Choice.create(content: '地域交流が活発')

@@ -27,5 +27,6 @@ Rails.application.routes.draw do
   resources :offers, only: [:edit, :update, :destroy]
   resources :profiles, only: [:edit, :update, :destroy]
   resources :messages, only: [:create]
+  resources :entries, only: [:index, :show]
   resources :rooms, only: [:index, :show, :create]
 end

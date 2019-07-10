@@ -1,0 +1,18 @@
+<h1>メッセージ一覧</h1>
+
+<table class="table">
+    <% @entries.each do |e| %>
+        <tr>
+            <% if current_user.is_estate == true %>
+                <% @user = User.find(e.normal_user_id) %>
+            <% else %>
+                <@ @user = user.find(e.estate_user_id) %>
+            <% end %>
+            <td><%= link_to @user.name, entry_path(e) %>からのメッセージ</td>
+<!--
+            <% @room = Room.find(e.room_id) %>
+            <td><%= link_to @room.name, room_path(@room) %>からのメッセージ</td>
+-->
+        </tr>
+    <% end %>
+</table>
