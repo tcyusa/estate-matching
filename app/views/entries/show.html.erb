@@ -1,5 +1,9 @@
 <h1 class="mb-2">メッセージ詳細</h1>
 
+<div class="row float-right mb-2">
+    <%= link_to "#{@opponent.name}の詳細", user_path(@opponent), class: 'btn btn-primary mr-2' %> 
+</div>
+
 <table class="table">
     <% @messages.each do |m| %>
         <tr>
