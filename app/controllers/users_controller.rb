@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     # 今は全て一般ユーザ
-    @user.is_estate = false
+    #@user.is_estate = false
     
     if @user.save
       flash[:success] = 'ユーザを登録しました。'
@@ -44,6 +44,6 @@ class UsersController < ApplicationController
   end
   
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :is_estate, :password, :password_confirmation)
   end
 end

@@ -3,7 +3,7 @@ class EntriesController < ApplicationController
     if current_user.is_estate == true
       @entries = Entry.where(estate_user_id: current_user.id)
     else
-      @entries = Entry.where(normal_user_id :current_user.id)
+      @entries = Entry.where(normal_user_id: current_user.id)
     end
   end
 
