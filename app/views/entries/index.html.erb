@@ -8,7 +8,7 @@
             <% else %>
                 <% @user = User.find(e.estate_user_id) %>
             <% end %>
-            <td><%= link_to @user.name, entry_path(e) %>からのメッセージ</td>
+            <td><%= link_to @user.name, entry_path(e) %>とのメッセージ</td>
         </tr>
     <% end %>
 </table>

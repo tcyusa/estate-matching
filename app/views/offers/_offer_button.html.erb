@@ -1,1 +1,15 @@
-<%= link_to '編集', edit_offer_path(offer, id: offer.id), class: 'btn btn-success mr-2' %>
+<% if current_user.id == @user.id %>
+    <%# 自分自身のとき編集ボタンを表示する %>
+    <%= link_to 'オファーを登録/編集する', edit_offer_path(@offer.id), class: 'btn btn-primary mr-2' %> 
+    <% if @offer.is_offered == true %>
+        <%= link_to 'オファーを終了する', @offer, method: :delete, data: { confirm: '本当に終了してもよろしいですか？' }, class: 'btn btn-danger mr-2' %> 
+    <% end %>
+
+<% elsif current_user.is_estate == true %>
+    <%# 自分が不動産ユーザーの時は、Entryを新規作成してメッセージを開始する %>
+    <%= form_with(model: @entry, local: true) do |f| %>
+        <%= f.hidden_field :estate_user_id, :value => current_user.id %>
+        <%= f.hidden_field :normal_user_id, :value => @user.id %>
+        <%= f.submit 'メッセージを送る', class: 'btn btn-primary' %>
+    <% end %>
+<% end %>

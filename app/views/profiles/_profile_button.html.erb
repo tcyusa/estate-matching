@@ -1,0 +1,4 @@
+<% if current_user.id == @user.id %>
+<%# 自分自身のとき編集ボタンを表示する %>
+    <%= link_to 'プロフィールを編集する', edit_profile_path(@profile.id), class: 'btn btn-primary mr-2' %> 
+<% end %>

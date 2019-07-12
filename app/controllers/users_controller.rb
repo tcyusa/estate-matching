@@ -17,6 +17,10 @@ class UsersController < ApplicationController
       @profile.save
     end
     
+    if (current_user.is_estate == true)
+      @entry = Entry.new
+    end
+    
     p params
   end
 

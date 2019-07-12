@@ -9,7 +9,9 @@
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
                 <% if logged_in? %>
-                    <li class="nav-item"><%= link_to '顧客一覧', users_path, class: 'nav-link' %></li>
+                    <% if current_user.is_estate == true %>
+                        <li class="nav-item"><%= link_to '顧客一覧', users_path, class: 'nav-link' %></li>
+                    <% end %>
                     <li class="nav-item"><%= link_to 'メッセージ', entries_path, class: 'nav-link' %></li>
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
                     <ul class="dropdown-menu dropdown-menu-right">

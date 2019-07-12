@@ -30,13 +30,18 @@ class OffersController < ApplicationController
   end
 
   def destroy
+    @offer = current_user.offer
+    
+    @offer.destroy
+    flash[:success] = 'オファーを終了しました。'
+    redirect_to user_path(current_user.id)
   end
   
   private
   
   def offer_params
     p params
-    params.require(:offer).permit(:min_price, :max_price, :years, :walking_time, :min_size, :is_family, city_ids: [], choice_ids: [])
+    params.require(:offer).permit(:min_price, :max_price, :years, :walking_time, :min_size, :is_family, :is_offered, city_ids: [], choice_ids: [])
   end
   
 end

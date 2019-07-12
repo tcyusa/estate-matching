@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_10_015946) do
+ActiveRecord::Schema.define(version: 2019_07_11_082013) do
 
   create_table "choices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2019_07_10_015946) do
     t.integer "walking_time", default: 0
     t.integer "min_size", default: 0
     t.boolean "is_family", default: false
+    t.boolean "is_offered", default: false
     t.index ["user_id"], name: "index_offers_on_user_id"
   end
 
@@ -91,7 +92,7 @@ ActiveRecord::Schema.define(version: 2019_07_10_015946) do
     t.bigint "user_id"
     t.text "pr"
     t.string "address"
-    t.string "business_name"
+    t.string "representative_name"
     t.string "tel"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -1,7 +1,7 @@
 <h1 class="mb-2">メッセージ詳細</h1>
 
-<div class="row float-right mb-2">
-    <%= link_to "#{@opponent.name}の詳細", user_path(@opponent), class: 'btn btn-primary mr-2' %> 
+<div class="float-right">
+    <%= link_to "#{@opponent.name}の詳細", user_path(@opponent), class: 'btn btn-outline-primary mb-2' %> 
 </div>
 
 <table class="table">
@@ -11,7 +11,7 @@
                 <div class="message">
                     <div class="row mb-1 justify-content-between">
                         <h5><%= m.user.name %></h5>
-                        <span><%= m.created_at %></span>
+                        <span><%= m.created_at.strftime("%Y年%m月%d日 %H時%-M分") %></span>
                     </div>
                     <%= m.content %>
                 </div>
@@ -20,8 +20,22 @@
     <% end %>
 </table>
 
+<!--
+<table class="table">
+    <% @messages.each do |m| %>
+        <tr>
+            <th><%= m.user.name %></th>
+            <td><%= m.created_at.strftime("%Y年%m月%d日 %H時%-M分") %></td>
+        </tr>
+        <tr>
+            <td colspan="2"><%= m.content %></td>
+        </tr>
+    <% end %>
+</table>
+-->
+
     <%= form_with(model: @message, local: true) do |f| %>
-      <%= f.text_area :content, size: "136x3" %>
+      <%= f.text_area :content, style: 'width:100%' %>
       <%= f.hidden_field :entry_id, :value => @entry.id %>
       <br>
       <div class="float-right">

@@ -1,0 +1,50 @@
+<table class="table">
+    <tr>
+        <th style="width: 20%">オファー状況</th>
+        <td>
+            <% if @offer.is_offered %>オファー受付中
+            <% else %>オファー受付停止
+            <% end %>
+        </td>
+    </tr>
+    <tr>
+        <th>希望地域</th>
+        <td>
+            <% @offer.cities.each do |c| %>
+                <span style="margin-right: 5px"><%= c.name %></span>
+            <% end %>
+        </td>
+    </tr>
+    <tr>
+        <th>家賃</th>
+        <td><%= @offer.min_price.to_s %>円 〜 <%= @user.offer.max_price.to_s %>円</td>
+    </tr>
+    <tr>
+        <th>築年数</th>
+        <td><%= @offer.years.to_s %>年以内</td>
+    </tr>
+    <tr>
+        <th>最寄駅徒歩</th>
+        <td><%= @offer.walking_time.to_s %>分以内</td>
+    </tr>
+    <tr>
+        <th>専有面積</th>
+        <td><%= @offer.min_size.to_s %>平米以上</td>
+    </tr>
+    <tr>
+        <th>家族構成</th>
+        <td>
+            <% if @offer.is_family %>ファミリー
+            <% else %>単身
+            <% end %>
+        </td>
+    </tr>
+    <tr>
+        <th>こだわり条件</th>
+        <td>
+            <% @offer.choices.each do |c| %>
+                <div><%= c.content %></div>
+            <% end %>
+        </td>
+    </tr>
+</table>

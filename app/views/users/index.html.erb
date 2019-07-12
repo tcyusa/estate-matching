@@ -1,13 +1,15 @@
 <h1>顧客一覧</h1>
 
 <% @users.each do |u| %>
-    <li class="media mb-3">
-        <img class="mr-2 rounded" src="<%= gravatar_url(u, { size: 80 }) %>" alt="">
-        <div class="media-body">
-            <div>
-                <h4><%= u.name %></h4>
-                <%= link_to 'オファー内容を確認する', user_path(u) %>
+    <% if u.offer.is_offered == true %>
+        <li class="media mb-3">
+            <img class="mr-2 rounded" src="<%= gravatar_url(u, { size: 80 }) %>" alt="">
+            <div class="media-body">
+                <div>
+                    <h4><%= u.name %></h4>
+                    <%= link_to 'オファー内容を確認する', user_path(u) %>
+                </div>
             </div>
-        </div>
-    </li>
+        </li>
+    <% end %>
 <% end %>

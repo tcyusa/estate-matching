@@ -1,7 +1,8 @@
 <h1>オファー内容を編集する</h1>
 
 <%= form_with(model: @offer, local: true) do |f| %>
-    <%= hidden_field_tag :user_id, current_user.id %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :is_offered, :value => true %>
     <table class="table">
 
         <tr>
@@ -21,7 +22,7 @@
             <td><%= f.number_field :years %>年以内</td>
         </tr>
         <tr>
-            <td>駅徒歩</td>
+            <td>最寄駅徒歩</td>
             <td><%= f.number_field :walking_time %>分以内</td>
         </tr>
         <tr>
