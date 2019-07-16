@@ -1,6 +1,6 @@
-<table class="table">
+<table class="table" id="information-view">
     <tr>
-        <th style="width: 20%">担当地域</th>
+        <th>担当地域</th>
         <td>
             <% @profile.cities.each do |c| %>
                 <span style="margin-right: 5px"><%= c.name %></span>
@@ -9,7 +9,7 @@
     </tr>
     <tr>
         <th>紹介文</th>
-        <td><%= @profile.pr %></td>
+        <td><%= simple_format(@profile.pr) %></td>
     </tr>
     <tr>
         <th>代表者名</th>
