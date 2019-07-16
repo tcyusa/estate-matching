@@ -7,6 +7,7 @@ class Offer < ApplicationRecord
   validates :walking_time, numericality: true
   validates :min_size, numericality: true
   validates :is_family, inclusion: { in: [true, false]}
+  validates :is_family, inclusion: { in: [true, false]}, default: false;
 
   has_many :offer_city_relation, dependent: :destroy
   has_many :cities, through: :offer_city_relation

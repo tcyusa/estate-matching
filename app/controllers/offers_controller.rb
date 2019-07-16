@@ -1,6 +1,6 @@
 class OffersController < ApplicationController
   before_action :require_user_logged_in
-  before_action :offer_params, only: [:update, :destroy]
+  before_action :offer_params, only: [:update]
   
   def new
   end
