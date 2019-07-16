@@ -1,9 +1,10 @@
 <h1 class="mb-2">メッセージ詳細</h1>
 
-<div class="float-right">
-    <%= link_to "#{@opponent.name}の詳細", user_path(@opponent), class: 'btn btn-outline-primary mb-2' %> 
+<div class="clearfix">
+    <%= link_to "#{@opponent.name}の詳細", user_path(@opponent), class: 'btn btn-outline-primary mb-2', id: 'button-view'%> 
 </div>
 
+<!--
 <table class="table">
     <% @messages.each do |m| %>
         <tr>
@@ -19,6 +20,18 @@
         </tr>
     <% end %>
 </table>
+-->
+
+<% @messages.each do |m| %>
+    <div id="message-container">
+        <hr>
+        <div class="row mb-1 justify-content-between" id="message-head">
+            <span id="sender"><%= m.user.name %></span>
+            <span id="created-date"><%= m.created_at.strftime("%Y年%m月%d日 %H時%M分") %></span>
+        </div>
+        <div><%= simple_format(m.content) %></div>
+    </div>
+<% end %>
 
 <!--
 <table class="table">

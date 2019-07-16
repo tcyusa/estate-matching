@@ -20,7 +20,38 @@ body {
     font-size: 16px;
 }
 
+.container {
+    width: 800px;
+    margin: auto;
+}
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
 #information-view tr th{
     width: 25%;
 }
 
+#button-view {
+    /*margin-right: 15px;*/
+    float: right;
+}
+
+#message-container #message-head{
+    margin-left: auto;
+    margin-right: auto;
+    width: 690px;
+    /*text-align: center;*/
+}
+#message-container #message-head #sender {
+    font-weight: bold;
+    font-size: 18px;
+    float: left;
+}
+
+#message-container #message-head #created-date {
+    float: right;
+}

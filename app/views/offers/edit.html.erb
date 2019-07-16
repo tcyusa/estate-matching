@@ -3,10 +3,10 @@
 <%= form_with(model: @offer, local: true) do |f| %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.hidden_field :is_offered, :value => true %>
-    <table class="table">
+    <table class="table" id="information-view">
 
         <tr>
-            <td style="width: 20%">希望地域</td>
+            <th>希望地域</th>
             <td>
                 <%= f.collection_check_boxes :city_ids, City.all, :id, :name do |b|%>
                     <span style="margin-right: 5px"><%= b.check_box + b.label %></span>
@@ -14,30 +14,30 @@
             </td>
         </tr>
         <tr>
-            <td>家賃</td>
+            <th>家賃</th>
             <td><%= f.number_field :min_price %>円 ~ <%= f.number_field :max_price %>円</td>
         </tr>
         <tr>
-            <td>築年数</td>
+            <th>築年数</th>
             <td><%= f.number_field :years %>年以内</td>
         </tr>
         <tr>
-            <td>最寄駅徒歩</td>
+            <th>最寄駅徒歩</th>
             <td><%= f.number_field :walking_time %>分以内</td>
         </tr>
         <tr>
-            <td>専有面積</td>
+            <th>専有面積</th>
             <td><%= f.number_field :min_size %>平米以上</td>
         </tr>
         <tr>
-            <td>家族構成</td>
+            <th>家族構成</th>
             <td>
                 <label style="margin-right: 10px"><%= f.radio_button :is_family, :false %>単身</label>
                 <label><%= f.radio_button :is_family, :true %>ファミリー</label>
             </td>
         </tr>
         <tr>
-            <td>こだわり条件</td>
+            <th>こだわり条件</th>
             <td>
                 <%= f.collection_check_boxes :choice_ids, Choice.all, :id, :content do |b| %>
                     <div><%= b.check_box + b.label %></div>
