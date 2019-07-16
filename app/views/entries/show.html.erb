@@ -11,7 +11,7 @@
                 <div class="message">
                     <div class="row mb-1 justify-content-between">
                         <h5><%= m.user.name %></h5>
-                        <span><%= m.created_at.strftime("%Y年%m月%d日 %H時%-M分") %></span>
+                        <span><%= m.created_at.strftime("%Y年%m月%d日 %H時%M分") %></span>
                     </div>
                     <%= simple_format(m.content) %>
                 </div>
