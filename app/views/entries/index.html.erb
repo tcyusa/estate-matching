@@ -10,7 +10,7 @@
             <% end %>
             <td class="row justify-content-between">
                 <div><%= link_to @user.name, entry_path(e) %>とのメッセージ</div>
-                <span>最終メッセージ：<%= e.messages.last.created_at.strftime("%Y年%m月%d日 %H時%-M分") %></span>
+                <span>最終メッセージ：<% if e.messages != nil %><%= e.messages.last.created_at.strftime("%Y年%m月%d日 %H時%-M分") %><% end %></span>
             </td>
         </tr>
     <% end %>
